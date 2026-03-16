@@ -1,11 +1,71 @@
 package scr;
 
+abstract class Room {
+
+    String type;
+    int beds;
+    int size;
+    double price;
+
+    Room(String type, int beds, int size, double price) {
+        this.type = type;
+        this.beds = beds;
+        this.size = size;
+        this.price = price;
+    }
+
+    void displayRoomDetails() {
+        System.out.println("Room Type: " + type);
+        System.out.println("Beds: " + beds);
+        System.out.println("Size: " + size + " sqft");
+        System.out.println("Price: " + price);
+    }
+}
+
+class SingleRoom extends Room {
+
+    SingleRoom() {
+        super("Single Room", 1, 200, 3000);
+    }
+}
+
+class DoubleRoom extends Room {
+
+    DoubleRoom() {
+        super("Double Room", 2, 350, 5000);
+    }
+}
+
+class SuiteRoom extends Room {
+
+    SuiteRoom() {
+        super("Suite Room", 3, 500, 9000);
+    }
+}
+
 public class BookMyStayApp {
 
     public static void main(String[] args) {
-        System.out.println("Welcome to Book My Stay");
-        System.out.println("Hotel Booking System v1.0");
-        System.out.println("Application started successfully.");
-    }
 
+        System.out.println("Book My Stay App - Version 2.1");
+
+        Room single = new SingleRoom();
+        Room doubleRoom = new DoubleRoom();
+        Room suite = new SuiteRoom();
+
+        int singleAvailability = 10;
+        int doubleAvailability = 7;
+        int suiteAvailability = 3;
+
+        single.displayRoomDetails();
+        System.out.println("Available: " + singleAvailability);
+        System.out.println();
+
+        doubleRoom.displayRoomDetails();
+        System.out.println("Available: " + doubleAvailability);
+        System.out.println();
+
+        suite.displayRoomDetails();
+        System.out.println("Available: " + suiteAvailability);
+    }
 }
